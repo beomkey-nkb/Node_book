@@ -1,1 +1,6 @@
-console.log('asdasdasd');
+function hello(name)
+{
+console.log('hi,'+name);
+
+}
+hello('engoing');
