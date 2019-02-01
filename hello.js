@@ -1,9 +1,9 @@
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'localhost',//이거 광역서버로 할거면 openhost
-  user     : 'me',
-  password : 'secret',
-  database : 'my_db'
+  host     : 'localhost',//
+  user     : 'root',//사용자 이름
+  password : '111111',//호스트 비밀번호
+  database : 'o2'// 내가 설정한 데이터베이스 이름
 });
 
 connection.connect();
