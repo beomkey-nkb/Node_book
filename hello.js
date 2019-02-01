@@ -51,9 +51,49 @@ else
 
 */
 
+/*  //업데이트 구문
+var update = 'UPDATE USER SET ISBN = ?,BOOK = ?,PRICE = ?,Oldprice = ? WHERE ISBN = ?' ;//이부분을 건드려야 값을 계속 넣을 수 있음
+
+var data = ['9789747799119','총균쇠','60000','7000','9789747799119'];
+
+con.query (update,data,function(error,result,fields)
+{
+if(error)
+{
+  console.log(error);
+}
+else
+{
+    console.log(result);
+}
+});
+
+*/
+
+/*      //delete 구문
+
+var deletesql = 'DELETE FROM USER WHERE ISBN = ?' ;//이부분을 건드려야 값을 계속 넣을 수 있음
+
+var data = ['9789747799119'];
+
+con.query (deletesql,data,function(error,result,fields)
+{
+if(error)
+{
+  console.log(error);
+}
+else
+{
+    console.log(result);
+}
+});
+
+*/
+
 
 
 
 /////////////////
+
 
 con.end();//접속을 끊음 무조건 마지막줄인듯
