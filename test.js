@@ -21,7 +21,7 @@ poolCluster.getConnection('MASTER', function (err, connection) {});
 // If can't connect to SLAVE1, return SLAVE2. (remove SLAVE1 in the cluster)
 poolCluster.on('remove', function (nodeId) {
   console.log('REMOVED NODE : ' + nodeId); // nodeId = SLAVE1
-});
+});//
 
 // A pattern can be passed with *  as wildcard
 poolCluster.getConnection('SLAVE*', 'ORDER', function (err, connection) {});
