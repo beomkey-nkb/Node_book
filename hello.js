@@ -1,16 +1,59 @@
 var mysql      = require('mysql');
-var connection = mysql.createConnection({
+var con = mysql.createConnection({
   host     : 'localhost',//접속할 데이터베이스 주소
   user     : 'root',//사용자 이름
   password : '111111',//호스트 비밀번호
   database : 'o2'// 내가 설정한 데이터베이스 이름
 });//이거 원래는 보안상으로 이렇게하면안댐 현재는 내 컴퓨터랑 맞추는 중
 
-connection.connect();
+con.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-  if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
+//////////////여기 부터가 본문
+
+/*   //셀렉트 구문
+var sql = 'SELECT * FROM USER'
+
+con.query(sql,function(error,result,fields)
+{
+  if(error)
+  {
+    console.log(error);
+  }
+  else
+   {
+
+    for(var i=0 ; i<result.length ;i ++)
+    {
+      console.log('result',result);
+    }
+
+  }
+
+});*/
+
+
+/* //인서트 구문
+var insert = 'INSERT INTO USER(ISBN,Book,price,Oldprice) VALUES(?,?,?,?)' ;//이부분을 건드려야 값을 계속 넣을 수 있음
+
+var data = ['9789747799119','총균쇠','30000','5000'];
+
+con.query (insert,data,function(error,result,fields)
+{
+if(error)
+{
+  console.log(error);
+}
+else
+{
+    console.log(result);
+}
 });
 
-connection.end();
+*/
+
+
+
+
+/////////////////
+
+con.end();//접속을 끊음 무조건 마지막줄인듯
