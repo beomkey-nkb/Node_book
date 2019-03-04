@@ -43,7 +43,7 @@ app.use(function(req, res, next){
 		}//naver api를 사용하기 위한 입력양식
 	};
 	
-	var result = requestO.get(options,function(req,rek,body){//get방식을 이용하여 naver에 요청, request-promise 모듈 사용
+	var result = requestO.get(options,function(req,rek,body){//get방식을 이용하여 naver에 요청, request 모듈 사용
 		console.log(body);
 		var parser = JSON.parse(body);//객체로 변환
 
