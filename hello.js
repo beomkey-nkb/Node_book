@@ -10,7 +10,7 @@ con.connect();
 
 //////////////여기 부터가 본문
 
-/*   //셀렉트 구문
+  //셀렉트 구문
 var sql = 'SELECT * FROM USER'
 
 con.query(sql,function(error,result,fields)
@@ -29,13 +29,19 @@ con.query(sql,function(error,result,fields)
 
   }
 
-});*/
+});
 
-
-/* //인서트 구문
+/*
+ //인서트 구문
 var insert = 'INSERT INTO USER(ISBN,Book,price,Oldprice) VALUES(?,?,?,?)' ;//이부분을 건드려야 값을 계속 넣을 수 있음
 
-var data = ['9789747799119','총균쇠','30000','5000'];
+
+//var data = ['9789747799119','총균쇠','30000','5000'];
+
+var isbn ;
+
+var data = [ ];
+
 
 con.query (insert,data,function(error,result,fields)
 {
@@ -87,8 +93,8 @@ else
     console.log(result);
 }
 });
-
 */
+
 
 
 
