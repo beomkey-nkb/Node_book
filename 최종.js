@@ -14,16 +14,15 @@ var url = require('url');
 var mysql      = require('mysql');
 
 
-var mysql      = require('mysql');
 
 var con = mysql.createConnection({
-  host     : 'localhost',//접속할 데이터베이스 주소
+  host     : 'localhost',//접속할 데이터베이스 주소  이거 외부접근 해보는중인데 너무 빡셈
   user     : 'root',//사용자 이름
   password : '111111',//호스트 비밀번호
   database : 'o2'// 내가 설정한 데이터베이스 이름
 });//이거 원래는 보안상으로 이렇게하면안댐 현재는 내 컴퓨터랑 맞추는 중
 
-con.connect();
+con.connect();// db랑 연결성공해버림
 
   
 var app = express();
@@ -75,13 +74,19 @@ app.use(function(req, res, next){
  				if (err) console.log(err);
 					else if(result != '')
 					{
+						console.log('중복값있음 ㅎㅎ');
   						console.log(result);
+						
+						/*var parser2 = JSON.stringify(result);
+						var real = parser2.items["price"];
+						console.log(real);*/
+						
 						res.send(result);
 						
 					}
 					else
 					{
-							console.log(result);
+						console.log('중복값 xxxxxXXX');
 						 
 					}
 						
@@ -125,17 +130,27 @@ app.use(function(req, res, next){
                         {
                             finaldata = $('.yes_b').text().slice(0,5);
                         }
-                    
-				   /*
-				   			if(isbnString)
+                 
+				   ///////////
+				   con.query(sql, [adr], function (err, result)
+				{
+ 				if (err) console.log(err);
+					else if(result != '')
+					{
+						
+						
+					}
+					else
+					{
+						if(isbnString)
+							{
+								if(finaldata)
 								{
-									if(finaldata)
-									{
-                          					var insert = 'INSERT INTO USER VALUES(?,?)' ;
-				   		  					var data = [isbnString,finaldata];
-									}
+                          				var insert = 'INSERT INTO USER VALUES(?,?)' ;
+				   		  				var data = [isbnString,finaldata];
 								}
-				             con.query (insert,data,function(error,result,fields)
+							}
+				         con.query (insert,data,function(error,result,fields)
 						{
 					   		if(error)
 					   		{
@@ -143,12 +158,19 @@ app.use(function(req, res, next){
 					   		}
 					   		else
 					   		{
-						   		console.log(result);
+						   		console.log('없어서 저장');
 					   		}
-				   		});
-				   */
+				   		 });
+					 
+						 
+					}
+						
+				});
+		  
+				  ////////////
+				   		
                  res.send(finaldata);
-               }
+				}
                catch(e)//중고 제품의 가격이 없을 경우에 대한 예외처리
                {
                   res.end('no price');
