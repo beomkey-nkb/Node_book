@@ -68,14 +68,18 @@ app.use(function(req, res, next){
 		  
 		
 				var adr = isbnString;
+		  
+		  // 셀렉트 함수를 통한 데이터베이스 조회 및 일치 확인코드
 				var sql = 'SELECT price FROM user WHERE isbn = ?';
 				con.query(sql, [adr], function (err, result)
 				{
  				if (err) console.log(err);
-					else if(result != '')
+					else if(result != '')//조회결과 중복값이 있을시만 여기 접근
 					{
 						console.log('중복값있음 ㅎㅎ');
   						console.log(result);
+						
+						//기범아 여기 json 파싱 부분좀 도와줘 ㅠ
 						
 						/*var parser2 = JSON.stringify(result);
 						var real = parser2.items["price"];
@@ -84,7 +88,7 @@ app.use(function(req, res, next){
 						res.send(result);
 						
 					}
-					else
+					else //중복값이 ㅇ벗으면 여기로 접근
 					{
 						console.log('중복값 xxxxxXXX');
 						 
@@ -144,7 +148,7 @@ app.use(function(req, res, next){
 					{
 						if(isbnString)
 							{
-								if(finaldata)
+								if(finaldata)//ISBN코드가 있고 파이널 데이터가 있으면 인서트함
 								{
                           				var insert = 'INSERT INTO USER VALUES(?,?)' ;
 				   		  				var data = [isbnString,finaldata];
