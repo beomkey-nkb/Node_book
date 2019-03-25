@@ -16,7 +16,7 @@ var mysql      = require('mysql');
 
 
 var con = mysql.createConnection({
-  host     : 'localhost',//접속할 데이터베이스 주소  이거 외부접근 해보는중인데 너무 빡셈
+  host     : '172.30.1.17',//접속할 데이터베이스 주소  이거 외부접근 해보는중인데 너무 빡셈
   user     : 'root',//사용자 이름
   password : '111111',//호스트 비밀번호
   database : 'o2'// 내가 설정한 데이터베이스 이름
