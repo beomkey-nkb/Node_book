@@ -86,7 +86,7 @@ app.use(function(req, res, next){
 						var real = parser2.items["price"];
 						console.log(real);*/
 						
-						res.send(result);
+						res.send(result[0].price);
 						
 					}
 					else //중복값이 ㅇ벗으면 여기로 접근
