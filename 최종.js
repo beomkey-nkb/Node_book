@@ -16,16 +16,23 @@ var mysql      = require('mysql');
 
 
 var con = mysql.createConnection({
-  host     : '203.250.148.93',//접속할 데이터베이스 주소  이거 외부접근 해보는중인데 너무 빡셈
-  port	   : 1074,//포트번호
-  user     : 's14011123',//사용자 이름
-  password : 's14011123',//호스트 비밀번호
-  database : 'test'// 내가 설정한 데이터베이스 이름
+	
+  host  : 'cirnect.asuscomm.com',//접속할 데이터베이스 주소  
+  port	   : 22,//포트번호
+  user     : 'pi',//사용자 이름
+  password : '1q2w3e4r',//호스트 비밀번호
+  database : 'o2'// 내가 설정한 데이터베이스 이름
+
 });//이거 원래는 보안상으로 이렇게하면안댐 현재는 내 컴퓨터랑 맞추는 중
 
 con.connect();// db랑 연결성공해버림
 
-  
+
+
+
+
+
+
 var app = express();
 app.set('port', process.env.PORT || 3000);//서버 3000번 포트로 열기, express 모듈 사용
 
@@ -57,6 +64,9 @@ app.use(function(req, res, next){
       }//naver api를 사용하기 위한 입력양식
    };
    
+	
+	
+	
    var result = requestO.get(options,function(req,rek,body){//get방식을 이용하여 naver에 요청, request 모듈 사용
       console.log(body);
       var parser = JSON.parse(body);//객체로 변환
@@ -163,6 +173,7 @@ app.use(function(req, res, next){
 					   		}
 					   		else
 					   		{
+								
 						   		console.log('없어서 저장');
 					   		}
 				   		 });
